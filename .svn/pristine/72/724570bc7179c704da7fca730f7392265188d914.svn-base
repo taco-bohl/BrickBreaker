@@ -1,0 +1,77 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Game;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+
+/**
+ *
+ * @author Tyler Bohl
+ */
+public class Ball extends GameObject implements Moveable{
+    
+    private int diameter;
+    private int xSpeed;
+    private int ySpeed;
+    
+    
+    public Ball(int xPosition, int yPosition, int diameter, Color color)
+    {
+        super(xPosition, yPosition, color);
+        this.diameter = diameter;
+        this.color = color;
+    }
+    
+    public int getXSpeed()
+    {
+        return xSpeed;
+    }
+    
+    public int getYSpeed()
+    {
+        return ySpeed;
+    }
+    
+    public int getDiameter()
+    {
+        return diameter;
+    }
+    
+    public void setYSpeed(int ySpeed)
+    {
+        this.ySpeed = ySpeed; 
+    }
+    
+    public void setXSpeed(int xSpeed)
+    {
+        this.xSpeed = xSpeed;
+    }
+    
+    @Override
+    public void move()
+    {
+        xPosition = xPosition + xSpeed;
+        yPosition = yPosition + ySpeed;
+    }
+    
+    @Override
+    public Rectangle getBounds()
+    {
+         Rectangle bounds = new Rectangle(xPosition, yPosition, diameter, diameter);
+         return bounds;
+    }
+    
+    @Override
+    public void draw(Graphics g)
+    {
+        g.setColor(color);
+        g.fillOval(xPosition, yPosition, diameter, diameter);
+    }
+    
+    
+}
